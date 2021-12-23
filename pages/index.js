@@ -12,7 +12,7 @@ export default function Home({ data }) {
   const [posts, setPosts] = useContext(PostsContext);
   useEffect(() => {
     const storedPosts = localStorage.getItem("posts");
-    if (storedPosts.length == 0) {
+    if (!storedPosts || storedPosts.length == 0) {
       return;
     }
     const storedObject = JSON.parse(storedPosts);
@@ -70,6 +70,6 @@ export async function getStaticProps(context) {
   }
   // We can fetch our pictures.
   return {
-    props: { id: "Cane" },
+    props: { id: "" },
   };
 }

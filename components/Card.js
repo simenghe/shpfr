@@ -14,8 +14,6 @@ export default function Card({ index, url, title, description, date }) {
     });
     console.log(posts);
   }
-  console.log(posts);
-  console.log(posts[1], !posts[1]);
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg py-4">
       {/* <img className="w-full h-auto" src="https://picsum.photos/200" alt="Sunset in the mountains" /> */}
@@ -23,15 +21,16 @@ export default function Card({ index, url, title, description, date }) {
         {url && url.includes("www.youtube.com") ? (
           <iframe className="w-full h-full" src={url}></iframe>
         ) : (
-          <img className="w-full h-auto" src={url} alt={title} />
-          //   <Image
-          //     className="w-full h-auto"
-          //     src={url}
-          //     alt={title}
-          //     width={1000}
-          //     height={1000}
-          //     layout="responsive"
-          //   />
+          // <img className="w-full h-auto" src={url} alt={title} />
+          <div className="w-96 h-full">
+            <Image
+              src={url}
+              alt={title}
+              width={1000}
+              height={1000}
+              layout="intrinsic"
+            />
+          </div>
         )}
       </a>
       <div className="px-6 py-4">
