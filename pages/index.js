@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useContext } from "react";
 import { PostsContext } from "../context/PostsContext";
+import Navbar from "../components/Navbar";
 
 export default function Home({ data }) {
   const [posts, setPosts] = useContext(PostsContext);
@@ -19,31 +20,37 @@ export default function Home({ data }) {
     setPosts(storedObject);
   }, []);
   return (
-    <div className="text-center justify-center w-full">
-      <Head>
-        <title>Shopify frontend challenge : Spacetagram</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1 className="text-6xl font-bold my-10 text-center ">Spacestagram.</h1>
+    <div>
 
-      {/* Display image items. */}
-      <div className="justify-center items-center flex flex-col-reverse overflow-y-auto">
-        {Array.isArray(data) &&
-          data.map((x, i) => {
-            console.log(x.title, x.url);
-            return (
-              <Card
-                key={i}
-                index={i}
-                url={x.url}
-                title={x.title}
-                description={x.explanation}
-                date={x.date}
-              />
-            );
-          })}
+      <Navbar />
+      <div className="text-center justify-center w-full">
+        <Head>
+          <title>Shopify frontend challenge : Spacetagram</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        {/* <h1 className="text-6xl font-bold my-10 text-center ">Spacestagram.</h1> */}
+
+        {/* Display image items. */}
+        <div className="justify-center items-center flex flex-col-reverse overflow-y-auto">
+          {Array.isArray(data) &&
+            data.map((x, i) => {
+              console.log(x.title, x.url);
+              return (
+                <Card
+                  key={i}
+                  index={i}
+                  url={x.url}
+                  title={x.title}
+                  description={x.explanation}
+                  date={x.date}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
+
   );
 }
 
